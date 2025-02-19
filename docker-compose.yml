@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  nginx:
+    build: .
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./dist:/usr/share/nginx/html
+      - ./handyjob.visda.ca.nginx.conf:/etc/nginx/conf.d/handyjob.visda.ca.nginx.conf
+      - ./certs:/etc/letsencrypt
+    restart: unless-stopped
